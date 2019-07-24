@@ -67,11 +67,10 @@ x_train, x_hold, y_train, y_hold = train_test_split(x,y,test_size=.2,random_stat
 import tensorflow as tf
 
 n_inputs = 25
-n_hidden1 = 100
-n_hidden2 = 50
-n_hidden3 = 25
-n_hidden4 = 10
-n_hidden5 = 4
+n_hidden1 = 20
+n_hidden2 = 16
+n_hidden3 = 8
+n_hidden4 = 4
 n_outputs = 2
 
 x = tf.placeholder(tf.float32, shape=(None, n_inputs), name='x')
@@ -95,8 +94,7 @@ with tf.name_scope('dnn'):
     hidden2 = neuron_layer(hidden1,n_hidden2,'hidden2',activation='relu')
     hidden3 = neuron_layer(hidden2,n_hidden3,'hidden3',activation='relu')
     hidden4 = neuron_layer(hidden3,n_hidden4,'hidden4',activation='relu')
-    hidden5 = neuron_layer(hidden4,n_hidden5,'hidden5',activation='relu')
-    logits = neuron_layer(hidden5,n_outputs,'outputs')
+    logits = neuron_layer(hidden4,n_outputs,'outputs')
  
 with tf.name_scope('loss'):
     xentropy = tf.nn.sparse_softmax_cross_entropy_with_logits(labels=y,logits=logits)
@@ -115,7 +113,7 @@ init = tf.global_variables_initializer()
 saver = tf.train.Saver()
 
 n_epochs = 100
-batch_size = 50
+batch_size = 500
 
 with tf.Session() as sess:
     init.run()
