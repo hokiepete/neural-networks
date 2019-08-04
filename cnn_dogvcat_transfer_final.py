@@ -66,12 +66,12 @@ def run_test_harness(epochs,targ_height,targ_width):
             epochs=epochs,
             verbose=1)
     #save
-    model.save('./models/final_cnn_dvc_trans_224.h5')
+    model.save('./models/final_cnn_dvc_trans.h5')
 
 
 
-targ_height = 224
-targ_width = 224   
+targ_height = 32
+targ_width = 32   
 epochs = 10
 #preprocess_cat_vs_dog_final()
 run_test_harness(epochs,targ_height,targ_width)
